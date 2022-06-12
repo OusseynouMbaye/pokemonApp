@@ -3,23 +3,41 @@ import { POKEMONS } from "./mock-pokemons-list";
 import { Pokemon } from "./pokemon";
 @Component({
   selector: "app-root",
-  template: ` <h1> {{ title }}!</h1>
-    <ul class="text-class">
-      <li *ngFor="let item of pokemonList" (click) ="open(item)">{{ item.types }}</li>
-    </ul>`,
+  templateUrl: "app.component.html",
   styles: [
-    `.text-class {
-      color: red; 
-      list-style-type: decimal;}`
+    `
+      .pokemon-grid {
+        color: red;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 10px;
+        justify-items: center;
+      }
+      .title-pokemon {
+        text-align: center;
+      }
+      .pokemon-img {
+        display: flex;
+        justify-content: center;
+      }
+      .pokemon-card {
+        background: beige;
+        min-width: 100%;
+      }
+      .pokemon-div{
+        
+      }
+    `,
   ],
 })
 export class AppComponent implements OnInit {
   title: string = "Pokemon List";
   pokemonList: Pokemon[] = POKEMONS;
   ngOnInit() {
-    console.table(this.pokemonList); 
+    console.table(this.pokemonList);
   }
-  open(pokemon: Pokemon) {
-    alert(`You clicked on a pokemon ${pokemon.name}`);
+  selectPokemon(event: MouseEvent) {
+    const index: number = +(event.target as HTMLInputElement).value;
+    alert(`You clicked on a pokemon ${this.pokemonList[index].name}`);
   }
 }
