@@ -1,7 +1,7 @@
 <h1> {{ title }}!</h1>
 
-<input type="number" (click)="selectPokemon($event)">
-
+<input #input type="number" (keyup)="selectPokemon(input.value)" />
+<p>{{pokemonSelected?.name}}</p>
 <div class="pokemon-grid">
     <div *ngFor="let item of pokemonList" class="pokemon-card">
         <div class="pokem-div">
