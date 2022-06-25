@@ -1,7 +1,34 @@
-<h1> {{ title }}!</h1>
+<h1 class="center"> {{ title }}!</h1>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let pokemon of pokemonList" class="col m4 s6">
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img [src]="pokemon.picture">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h4>{{ pokemon.name }}</h4>
+                        <p>{{ pokemon.created }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<input #input type="number" (keyup)="selectPokemon(input.value)" />
-<p>{{pokemonSelected?.name}}</p>
+<!-- <div class="inputPokemon">
+    <div>
+        <input #input type="number" (keyup.enter)="selectPokemon(input.value)" />
+    </div>
+    <div>
+        <p *ngIf="pokemonSelected;else noPokemon">
+            you select the pokemon {{pokemonSelected?.name}}
+        </p>
+        <ng-template #noPokemon>il y pa de pokemon</ng-template>
+    </div>
+
+</div> 
 <div class="pokemon-grid">
     <div *ngFor="let item of pokemonList" class="pokemon-card">
         <div class="pokem-div">
@@ -11,4 +38,4 @@
             <div class="title-pokemon"> {{item.name}}</div>
         </div>
     </div>
-</div>
+</div>-->
